@@ -1,0 +1,29 @@
+@import "swatches";
+
+// body
+$primaryBackgroundColor: white;
+$secondaryBackgroundColor: $darkGreen;
+$primaryTextColor: $darkGray;
+$secondaryTextColor: $lightGray;
+
+// radius
+$globalRadius: 8px;
+
+// transitions
+$globalTransitionDelay: 0.3s;
+$globalFastTransitionDelay: $globalTransitionDelay * 3 / 2;
+$globalVeryFastTransitionDelay: $globalTransitionDelay / 2;
+
+// media
+$largeMobileWidth: 425px;
+
+// buttons
+$buttonTextColor: white;
+$buttonBackgroundColor: $teal;
+
+// footer
+$footerBackgroundColor: $darkGreen;
+
+// nav-bar
+$navBarHeight: 90px;
+$navBarOffset: 15px;

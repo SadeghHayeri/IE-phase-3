@@ -1,0 +1,79 @@
+@import "../variables";
+@import "../mixins";
+
+nav {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  background-color: white;
+  width: 100%;
+  height: $navBarHeight;
+
+  .bigger-container {
+    height: $navBarHeight;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+
+  &.nav-box-shadow {
+    @include box-shadow(0px, 2px, 20px, rgba(0, 0, 0, .1));
+  }
+
+  .logo {
+    color: $teal;
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: Shabnam-Bold;
+      margin: 0;
+    }
+
+    img {
+      margin-left: 20px;
+      width: 60px;
+      height: auto;
+    }
+  }
+
+  .user-button {
+    font-size: 18px;
+    color: $purple;
+    cursor: pointer;
+    padding: ($navBarHeight - 30px)/2 0px;
+    direction: ltr;
+
+    .area-name {
+      margin-right: 5px;
+    }
+  }
+
+  .dropdown-container {
+    .dropdown-content {
+      margin-top: 25px;
+      .offset {
+        height: $navBarOffset;
+      }
+    }
+
+  }
+}
+
+@media (max-width: 600px) {
+  nav {
+    .dropdown-container {
+      margin-left: 20px !important;
+      .area-name {
+        display: none;
+        background-color: red;
+      }
+    }
+  }
+}

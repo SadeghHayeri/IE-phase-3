@@ -1,0 +1,40 @@
+footer {
+  margin-top: 80px;
+  background-color: $secondaryBackgroundColor;
+  color: white;
+
+  .container {
+    height: 80px;
+    display: flex;
+
+    @media (max-width: $largeMobileWidth) {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      height: auto;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+
+    .trademark {}
+    .social-networks {
+      @media (max-width: $largeMobileWidth) {
+        padding-bottom: 20px;
+      }
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      img {
+        margin-left: 10px;
+        margin-right: 10px;
+        width: 40px;
+        height: auto;
+      }
+    }
+  }
+}

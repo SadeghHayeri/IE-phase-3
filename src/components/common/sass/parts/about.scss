@@ -1,0 +1,55 @@
+.about {
+  margin-top: 100px;
+
+  img {
+    width: 100%;
+    height: auto;
+    margin-top: 30px;
+  }
+
+  .info {
+
+    h2 {
+      margin-bottom: 35px;
+      font-family: Shabnam-Bold
+    }
+
+    li {
+      font-family: Shabnam-Light;
+      font-size: 20px;
+      line-height: 2;
+      margin-right: 20px;
+      @media (max-width: $largeMobileWidth) {
+        margin-right: 5px;
+        font-size: 13px;
+      }
+    }
+
+    .ticks {
+      color: $purple;
+      margin-left: 15px;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .about {
+    .info {
+      padding-right: 65px;
+      padding-left: 65px;
+    }
+
+    h2 {
+      text-align: center;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .about {
+    .info {
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+  }
+}
