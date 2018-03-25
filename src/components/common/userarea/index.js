@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './dropdown.scss';
+import './style.scss';
 
 class UserArea extends Component {
     render() {
