@@ -10,6 +10,10 @@ import advantageIcon2 from "./images/icons/726488.svg";
 import advantageIcon3 from "./images/icons/726499.svg";
 
 class MainPage extends Component {
+    componentDidMount() {
+        document.title = "خانه به دوش | صفحه اصلی";
+    }
+
     render() {
         return (
             <div>

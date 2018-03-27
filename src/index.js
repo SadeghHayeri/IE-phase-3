@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MainPage from './components/main-page/index.js';
+import { BrowserRouter } from "react-router-dom";
 
-import './components/common/sass/app.scss';
+import App from './app.js';
 
 ReactDOM.render(
-    <MainPage />,
+    <BrowserRouter>
+        <App/>
+    </BrowserRouter>,
     document.getElementById('root')
 );
