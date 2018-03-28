@@ -113,6 +113,56 @@ class Search {
 
         return houses;
     }
+
+    static getHouse(owner, id) {
+        var imagePath1 = '/assets/images/houses/13PINK1-master768-v2.jpg';
+        var imagePath2 = '/assets/images/houses/320px-Cambo_169.jpg';
+
+        var house1 = {
+            id: "34_Fdsf33",
+            owner: "folan",
+            dealType: DealType.BUY,
+            buildingType: BuildingType.APARTMENT,
+            area: 4000,
+            price: {
+                sell: 50000,
+            },
+            location: {
+                name: "فلان‌جا",
+                lat: 54.32131,
+                lng: 34.52344,
+            },
+            imgPath: imagePath1,
+            description: "توضیحات وافی و ککککافی",
+            phoneNumber: "09*****2021",
+            hasBoughtPhoneNumber: false
+        };
+        var house2 = {
+            id: "34_Fdsf33",
+            owner: "folan",
+            dealType: DealType.RENTAL,
+            buildingType: BuildingType.VILLA,
+            area: 4500,
+            price: {
+                base: 50000,
+                rent: 7200,
+            },
+            location: {
+                name: "فلان‌جا",
+                lat: 54.32131,
+                lng: 34.52344,
+            },
+            imgPath: imagePath2,
+            description: "توضیحات کوتاه و ناکافی",
+            phoneNumber: "09123092303",
+            hasBoughtPhoneNumber: true
+        };
+
+        if (Math.random() >= 0.5)
+            return house1;
+        else
+            return house2;
+    }
 }
 
 export default Search;

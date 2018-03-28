@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PersianView from '../../common/persian-view'
 
 import './style.scss'
 import {Link} from "react-router-dom";
@@ -21,7 +22,7 @@ class House extends Component {
                     <img src={this.props.item.imgPath} alt=""/>
                 </div>
                 <div className="row item-detail">
-                    <div className="col-md-8">{this.props.item.area} متر مربع</div>
+                    <div className="col-md-8"><PersianView data={this.props.item.area}/><span className="unit">متر مربع</span></div>
                     <div className="col-md-4">
                         {
                             (this.isRentDealType()) ?
@@ -38,13 +39,15 @@ class House extends Component {
                                     <div className="col-md-6">
                                         <span className="data-title">رهن</span>
                                         <span className="price">
-                                            {this.props.item.price.base}<span className="unit">تومان</span>
+                                            <PersianView data={this.props.item.price.base}/>
+                                            <span className="unit">تومان</span>
                                         </span>
                                     </div>
                                     <div className="col-md-6">
                                         <span className="data-title">اجاره</span>
                                         <span className="price">
-                                            {this.props.item.price.rent}<span className="unit">تومان</span>
+                                            <PersianView data={this.props.item.price.rent}/>
+                                            <span className="unit">تومان</span>
                                         </span>
                                     </div>
                                 </div>
@@ -53,7 +56,8 @@ class House extends Component {
                                 <div className="col-md-6">
                                     <span className="data-title">قیمت</span>
                                     <span className="price">
-                                        {this.props.item.price.sell}<span className="unit">تومان</span>
+                                        <PersianView data={this.props.item.price.sell}/>
+                                        <span className="unit">تومان</span>
                                     </span>
                                 </div>
                             )
