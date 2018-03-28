@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './style.scss';
+import Auth from "../../../services/auth";
 
 class UserArea extends Component {
     render() {
@@ -13,10 +14,10 @@ class UserArea extends Component {
                 <div className="dropdown-content">
                     <div className="offset"></div>
                     <div className="base-card light-card">
-                        <div className="name">{this.props.user.name}</div>
+                        <div className="name">{Auth.getUser().name}</div>
                         <div className="credit">
                             <span className="title">اعتبار</span>
-                            <span className="amount">{this.props.user.credit} تومان</span>
+                            <span className="amount">{Auth.getUser().credit} تومان</span>
                         </div>
                         <button>افزایش اعتبار</button>
                     </div>

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import logo from '../../common/images/logo.png';
 import UserArea from '../../common/userarea';
-import './style.scss';
-import Auth from '../../../services/auth.js';
 import SearchForm from '../../common/search-form'
+import './style.scss';
 
 
 class Header extends Component {
@@ -19,7 +18,7 @@ class Header extends Component {
                 </div>
                 <div className="container">
                     <div className="row ltr">
-                        <UserArea user={Auth.getUser()}/>
+                        <UserArea/>
                     </div>
                     <a href="/" className="row logo-container">
                         <div className="logo">
