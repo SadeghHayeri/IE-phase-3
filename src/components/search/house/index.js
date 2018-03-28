@@ -22,7 +22,7 @@ class House extends Component {
                     <img src={this.props.item.imgPath} alt=""/>
                 </div>
                 <div className="row item-detail">
-                    <div className="col-md-8"><PersianView data={this.props.item.area}/><span className="unit">متر مربع</span></div>
+                    <div className="col-md-8"><PersianView data={this.props.item.area}/><span className="item-unit"> متر مربع</span></div>
                     <div className="col-md-4">
                         {
                             (this.isRentDealType()) ?
@@ -40,14 +40,14 @@ class House extends Component {
                                         <span className="data-title">رهن</span>
                                         <span className="price">
                                             <PersianView data={this.props.item.price.base}/>
-                                            <span className="unit">تومان</span>
+                                            <span className="item-unit">تومان</span>
                                         </span>
                                     </div>
                                     <div className="col-md-6">
                                         <span className="data-title">اجاره</span>
                                         <span className="price">
                                             <PersianView data={this.props.item.price.rent}/>
-                                            <span className="unit">تومان</span>
+                                            <span className="item-unit">تومان</span>
                                         </span>
                                     </div>
                                 </div>
@@ -57,7 +57,7 @@ class House extends Component {
                                     <span className="data-title">قیمت</span>
                                     <span className="price">
                                         <PersianView data={this.props.item.price.sell}/>
-                                        <span className="unit">تومان</span>
+                                        <span className="item-unit">تومان</span>
                                     </span>
                                 </div>
                             )
