@@ -5,7 +5,8 @@ class SearchForm extends Component {
 
     render() {
         return (
-            <div>
+            <div className="container">
+                { (this.props.title) && <h3 className="gray-content title">{this.props.title}</h3> }
                 <div className="row gray-area base-card dark-card no-margin">
                     <form action="/search.html" className="form-inline">
                         <div className="col-md-4 col-xs-12">

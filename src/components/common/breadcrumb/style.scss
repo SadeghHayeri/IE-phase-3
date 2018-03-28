@@ -1,0 +1,12 @@
+@import "../sass/variables";
+@import "../sass/mixins";
+
+.breadcrumb {
+  margin-top: $navBarHeight;
+  height: 180px;
+  background-image: url('/assets/images/pattern/geometry2.png');
+  color: $teal;
+  display: flex;
+  align-items: center;
+  font-family: Shabnam-Normal;
+}

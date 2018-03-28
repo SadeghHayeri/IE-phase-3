@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './style.scss';
-import Auth from "../../../services/auth";
+import DropDown from "../dropdown";
 
 class UserArea extends Component {
     render() {
@@ -11,17 +11,7 @@ class UserArea extends Component {
                     <span>ناحیه کاربری</span>
                 </div>
 
-                <div className="dropdown-content">
-                    <div className="offset"></div>
-                    <div className="base-card light-card">
-                        <div className="name">{Auth.getUser().name}</div>
-                        <div className="credit">
-                            <span className="title">اعتبار</span>
-                            <span className="amount">{Auth.getUser().credit} تومان</span>
-                        </div>
-                        <button>افزایش اعتبار</button>
-                    </div>
-                </div>
+                <DropDown/>
             </div>
         );
     }

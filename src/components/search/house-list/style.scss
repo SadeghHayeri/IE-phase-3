@@ -1,0 +1,99 @@
+@import "../../common/sass/variables";
+@import "../../common/sass/mixins";
+
+.search-header {
+  margin-top: 40px;
+  text-align: center;
+}
+.search-form-header {
+  margin-top: 90px;
+  text-align: center;
+}
+
+.search-container {
+
+  a:hover {
+    color: $primaryTextColor;
+    text-decoration: none;
+  }
+
+  .item {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    .building-type {
+      top: 41px;
+      left: 25px;
+      width: auto;
+      height: 28px;
+      padding-left: 22px;
+      padding-right: 22px;
+      padding-top: 2px;
+      position: absolute;
+      @include border-radius($globalRadius);
+    }
+
+    .image-container {
+      width: 100%;
+      height: 220px;
+      overflow-y: hidden;
+      img {
+        @include border-radius-top($globalRadius);
+        width: 100%;
+      }
+    }
+
+    .item-detail {
+      padding: 20px;
+      width: 100%;
+      .fa-map-marker-alt {
+        margin-left: 8px;
+      }
+      .data-title {
+        padding-left: 15px;
+      }
+      .price {
+        .unit {
+          padding-right: 8px;
+          color: $lightenedGray;
+          font-size: 14px;
+        }
+      }
+      hr {
+        width: 100%;
+        margin-left: 14px;
+        margin-right: 14px;
+        border-top: 1px solid rgba(153, 153, 153, 0.88);
+      }
+    }
+  }
+}
+
+.gray-area {
+  margin-top: 20px;
+  padding: 20px;
+
+  &.center {
+    display: flex;
+    justify-content: center;
+  }
+  &.no-margin {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  label {
+    color: white;
+  }
+
+  input[type=radio] {
+    margin-right: 20px;
+  }
+
+  .margin-top {
+    margin-top: 25px;
+  }
+}

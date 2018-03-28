@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import logo from '../../common/images/logo.png';
 import UserArea from '../../common/userarea';
 import SearchForm from '../../common/search-form'
+import {Link} from "react-router-dom";
+
+import logo from '../../common/images/logo.png';
 import './style.scss';
 
 
@@ -20,14 +22,14 @@ class Header extends Component {
                     <div className="row ltr">
                         <UserArea/>
                     </div>
-                    <a href="/" className="row logo-container">
+                    <Link to="/" className="row logo-container">
                         <div className="logo">
                             <img src={logo} alt=""/>
                             <h1>خانه به دوش</h1>
                         </div>
-                    </a>
-                    <SearchForm/>
+                    </Link>
                 </div>
+                <SearchForm/>
             </header>
         );
     }
