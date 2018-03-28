@@ -1,0 +1,40 @@
+@import "../../common/sass/variables";
+@import "../../common/sass/mixins";
+
+.account-container {
+
+  .row {
+    margin-top: 80px;
+  }
+
+  .amount {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    margin-top: 15px;
+
+    color: $lightenedGray;
+    font-size: 22px;
+
+    span {
+      color: $primaryTextColor;
+      font-size: 30px;
+      font-family: Shabnam-Normal;
+      padding: 10px;
+    }
+
+    p {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .unit {
+    color: $lightenedGray;
+  }
+
+  button {
+    height: 50px;
+  }
+}

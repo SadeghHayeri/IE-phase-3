@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './style.scss';
+import {Link} from "react-router-dom";
 
 class SearchForm extends Component {
 
@@ -8,7 +9,7 @@ class SearchForm extends Component {
             <div className="container">
                 { (this.props.title) && <h3 className="gray-content title">{this.props.title}</h3> }
                 <div className="row gray-area base-card dark-card no-margin">
-                    <form action="/search.html" className="form-inline">
+                    <form action="/search" className="form-inline">
                         <div className="col-md-4 col-xs-12">
                             <div className="unit" htmlFor="area">متر مربع</div>
                             <input name="area" id="area" type="text" placeholder="حداکثر متراژ"/>
@@ -37,7 +38,7 @@ class SearchForm extends Component {
                     </form>
                 </div>
                 <div className="row gray-area base-card dark-card center no-margin">
-                    <span>صاحب خانه هستید؟<a className="link" href="#"> خانه خود را ثبت کنید</a></span>
+                    <span>صاحب خانه هستید؟<Link className="link" to="/add-house"> خانه خود را ثبت کنید</Link></span>
                 </div>
             </div>
         );

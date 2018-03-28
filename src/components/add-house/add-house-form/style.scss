@@ -1,0 +1,36 @@
+@import "../../common/sass/variables";
+@import "../../common/sass/mixins";
+
+.add-house-container {
+  margin-top: 60px;
+
+  form {
+    label {
+      cursor: pointer;
+    }
+
+    input[type="radio"] {
+      float: none;
+      margin-left: 5px;
+    }
+    select {
+      margin-top: 18px;
+    }
+
+    .margin-left {
+      margin-left: 25px;
+    }
+
+    .unit {
+      color: $lightenedGray;
+    }
+
+    .margin-top {
+      margin-top: 16px;
+    }
+
+    .submit-button-container {
+      margin-top: 40px;
+    }
+  }
+}

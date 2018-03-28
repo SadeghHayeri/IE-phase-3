@@ -1,0 +1,55 @@
+@import "../common/sass/variables";
+@import "../common/sass/mixins";
+
+.leaf-container {
+  margin-top: 60px;
+
+  .info {
+    padding-left: 30px;
+
+    .building-type {
+      float: right;
+      padding: 10px 25px;
+      @include border-radius($globalRadius);
+    }
+
+    .data-container {
+      margin-top: 70px;
+      display: flex;
+      flex-direction: column;
+      clear: both;
+
+      .data-row {
+        margin-top: 15px;
+        display: flex;
+        border-bottom: 1px solid $veryLightGray;
+        justify-content: space-between;
+
+        //TODO: ba float eshkal nadare? ba flex nemishe?
+        .label {
+          color: $lightenedGray;
+          font-family: Shabnam-Normal;
+        }
+
+        .data {
+          color: $primaryTextColor;
+          font-family: Shabnam-Light;
+        }
+      }
+    }
+  }
+
+  .left-side {
+    img {
+      width: 100%;
+      @include border-radius($globalRadius);
+    }
+
+    button {
+      margin-top: 15px;
+    }
+    button.failed {
+      background-color: $yellowLight;
+    }
+  }
+}

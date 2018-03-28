@@ -3,6 +3,7 @@ import PersianView from '../../common/persian-view'
 
 import './style.scss';
 import Auth from "../../../services/auth";
+import {Link} from "react-router-dom";
 
 class DropDown extends Component {
     render() {
@@ -15,7 +16,7 @@ class DropDown extends Component {
                         <span className="title">اعتبار</span>
                         <span className="amount"><PersianView data={Auth.getUser().credit}/> تومان</span>
                     </div>
-                    <button>افزایش اعتبار</button>
+                    <Link to={"/account"}><button>افزایش اعتبار</button></Link>
                 </div>
             </div>
         );
