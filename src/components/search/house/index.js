@@ -35,7 +35,7 @@ class House extends Component {
                     {
                         (this.isRentDealType()) ?
                             (
-                                <div className="col-md-12 no-margin">
+                                <div className="col-md-12 row">
                                     <div className="col-md-6">
                                         <span className="data-title">رهن</span>
                                         <span className="price">
@@ -53,12 +53,14 @@ class House extends Component {
                                 </div>
                             ) :
                             (
-                                <div className="col-md-6">
-                                    <span className="data-title">قیمت</span>
-                                    <span className="price">
-                                        <PersianView data={this.props.item.price.sell}/>
-                                        <span className="item-unit">تومان</span>
-                                    </span>
+                                <div className="col-md-12 row">
+                                    <div className="col-md-6">
+                                        <span className="data-title">قیمت</span>
+                                        <span className="price">
+                                            <PersianView data={this.props.item.price.sell}/>
+                                            <span className="item-unit">تومان</span>
+                                        </span>
+                                    </div>
                                 </div>
                             )
                     }
