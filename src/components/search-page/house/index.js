@@ -12,14 +12,14 @@ class House extends Component {
 
     render() {
         return (
-            <Link to={"/house/" + this.props.item.owner + "/" + this.props.item.id} className="item base-card light-condensed-card">
+            <Link to={"/house/" + this.props.item.owner.toLowerCase() + "/" + this.props.item.id.toLowerCase()} handler={"salam :D"} className="item base-card light-condensed-card">
                 {
                     (this.isRentDealType()) ?
                         (<span className="building-type tag-red">رهن و اجاره</span>) :
                         (<span className="building-type tag-purple">فروش</span>)
                 }
                 <div className="image-container">
-                    <img src={this.props.item.imgPath} alt=""/>
+                    <img src={this.props.item.imgURL} alt=""/>
                 </div>
                 <div className="row item-detail">
                     <div className="col-md-8"><PersianView data={this.props.item.area}/><span className="item-unit"> متر مربع</span></div>
@@ -29,7 +29,7 @@ class House extends Component {
                                 (<i className="fas fa-map-marker-alt red-content"></i>) :
                                 (<i className="fas fa-map-marker-alt purple-content"></i>)
                         }
-                        {this.props.item.location.name}
+                        {this.props.item.address}
                     </div>
                     <hr/>
                     {

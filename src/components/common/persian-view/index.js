@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import persianJs from 'persianjs'
+import NumberService from "../../../services/number";
 
 class PersianView extends Component {
 
     render() {
         return (
-            <span>{persianJs(this.props.data.toString()).arabicChar().englishNumber().arabicNumber().toString()}</span>
+            <span>{NumberService.toPersian(this.props.data)}</span>
         );
     }
 }

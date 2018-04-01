@@ -1,8 +1,30 @@
-class Auth {
-    static user = {name: "بهنام همایون", credit: 10000};
+import RequestService from "./request";
 
-    static getUser() {
-        return this.user;
+class Auth {
+    static user = null;
+
+    static getUser(successCallback, errorCallback) {
+        if(this.user)
+            successCallback(this.user);
+        else {
+            RequestService.postRequest("/login", {},
+                (data) => {
+                    this.user = {
+                        id: data.id,
+                        name: data.name,
+                        balance: data.balance
+                    };
+                    successCallback(this.user)
+                },
+                (error) => {
+                    errorCallback(error)
+                }
+            );
+        }
+    }
+
+    static isLogedIn() {
+        return this.user !== null;
     }
 }
 

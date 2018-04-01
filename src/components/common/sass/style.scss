@@ -25,7 +25,8 @@ form.form-inline {
 }
 
 input[type=text],
-input[type=select]{
+input[type=select],
+input[type=number]{
   border: 1px solid $lightenedGray;
   outline: none;
   width: 100%;
