@@ -5,8 +5,8 @@ import Auth from '../../../services/auth'
 import BaseForm from '../../base/baseform'
 import RequestService from '../../../services/request'
 import NumberService from "../../../services/number";
-
-import BindingService from '../../../services/binder'
+import BindingService from '../../../services/binder';
+import Toast from "../../../services/toast";
 
 class AccountForm extends BaseForm {
     constructor(props) {
@@ -15,7 +15,7 @@ class AccountForm extends BaseForm {
             user: {},
             isLogin: false,
             formData: {
-                'price': ''
+                price: ''
             }
         };
     }
@@ -37,8 +37,22 @@ class AccountForm extends BaseForm {
         });
     }
 
+    validateFormInputs() {
+        let formData = this.state.formData;
+        let error = true;
+        if (this.isEmpty(formData.price)) {
+            Toast.warning("فیلد مبلغ مورد نظر الزامی است");
+            error = false;
+        }
+        return error;
+    }
+
     handleSubmit(e) {
         e.preventDefault();
+
+        if (!this.validateFormInputs())
+            return;
+
         const parameters = {
             'balance-value': parseInt(NumberService.toEnglish(this.state.formData.price), 10),
         };
@@ -47,8 +61,10 @@ class AccountForm extends BaseForm {
             (response) => {
                 Auth.makeRequest(
                     (data) => {
-                        this.state.user = data;
-                        this.setState(this.state);
+                        let state = this.state;
+                        state.user = data;
+                        state.formData.price = '';
+                        this.setState(state);
                         BindingService.signal('AuthChange', data);
                     }
                 );
@@ -79,7 +95,7 @@ class AccountForm extends BaseForm {
                             </div>
                             <div className="offset-6"></div>
                             <div className="col-md-6 submit-button-container">
-                                <button className="btn-custom"  type="submit">افزایش اعتبار</button>
+                                <button className="btn-custom" type="submit">افزایش اعتبار</button>
                             </div>
                         </div>
                     </form>

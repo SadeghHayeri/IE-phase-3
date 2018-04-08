@@ -25,8 +25,6 @@ class SearchPage extends Component {
         const formData = queryString.parse(this.props.location.search);
         HouseService.query(formData, (data) => {
             this.setState({houses: data});
-        }, (error) => {
-            console.log(error);
         });
     }
 

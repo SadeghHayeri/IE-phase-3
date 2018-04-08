@@ -1,5 +1,7 @@
+import React from 'react';
 import { Component } from 'react';
 import NumberService from "../../services/number";
+
 
 class BaseForm extends Component {
 
@@ -9,9 +11,14 @@ class BaseForm extends Component {
         this.handleNumberChange = this.handleNumberChange.bind(this);
         this.handlePriceNumberChange = this.handlePriceNumberChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+
         this.state = {
             formData: {}
         };
+    }
+
+    isEmpty(data) {
+         return data.toString().trim().length === 0;
     }
 
     handleNumberChange(event) {

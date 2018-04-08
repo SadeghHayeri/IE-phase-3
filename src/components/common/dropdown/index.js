@@ -5,7 +5,6 @@ import './style.scss'
 import {Link} from "react-router-dom"
 import BindingService from '../../../services/binder'
 
-
 class DropDown extends Component {
     constructor(props) {
         super(props);

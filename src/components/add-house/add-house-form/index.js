@@ -4,6 +4,7 @@ import NumberService from "../../../services/number";
 import './style.scss';
 import RequestService from "../../../services/request";
 import {withRouter} from "react-router";
+import Toast from "../../../services/toast";
 
 class AddHouseForm extends BaseForm {
     constructor(props) {
@@ -25,10 +26,53 @@ class AddHouseForm extends BaseForm {
         }
     }
 
+    validateFormInputs() {
+        let formData = this.state.formData;
+        let error = true;
+        if (formData["building-type"] === -1) {
+            Toast.warning("فیلد نوع ملک الزامی است");
+            error = false;
+        }
+        if (this.isEmpty(formData.area)) {
+            Toast.warning("فیلد متراژ الزامی است");
+            error = false;
+        }
+        if (this.isEmpty(formData.address)) {
+            Toast.warning("فیلد آدرس الزامی است");
+            error = false;
+        }
+        if (this.isEmpty(formData.phone)) {
+            Toast.warning("فیلد شماره‌ی تلفن الزامی است");
+            error = false;
+        }
+        if (formData["deal-type"] === "1") {
+            if(this.isEmpty(formData.price.base)) {
+                Toast.warning("فیلد قیمت پایه الزامی است");
+                error = false;
+            }
+            if(this.isEmpty(formData.price.rent)) {
+                Toast.warning("فیلد قیمت اجاره الزامی است");
+                error = false;
+            }
+        }
+        else {
+            if(this.isEmpty(formData.price.buy)) {
+                Toast.warning("فیلد قیمت خرید الزامی است");
+                error = false;
+            }
+        }
+        return error;
+    }
+
     handleSubmit(e) {
         e.preventDefault();
+
+        if (!this.validateFormInputs())
+            return;
+
         let parameters = this.state.formData;
         parameters.area = parseInt(NumberService.toEnglish(parameters.area), 10);
+        parameters.phone = NumberService.toEnglish(parameters.phone);
         parameters.price.base = parseInt(NumberService.toEnglish(parameters.price.base), 10);
         parameters.price.rent = parseInt(NumberService.toEnglish(parameters.price.rent), 10);
         parameters.price.buy = parseInt(NumberService.toEnglish(parameters.price.buy ), 10);
@@ -94,8 +138,8 @@ class AddHouseForm extends BaseForm {
                             </div>
                         }
                         <div className="col-md-6 margin-top">
-                            <input name="number" id="number" type="text" placeholder="شماره تلفن"
-                                   value={this.state.formData.number}
+                            <input name="phone" id="phone" type="text" placeholder="شماره تلفن"
+                                   value={this.state.formData.phone}
                                    onChange={this.handleNumberChange}/>
                         </div>
                         {

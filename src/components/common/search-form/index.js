@@ -5,7 +5,7 @@ import './style.scss';
 import {Link} from "react-router-dom";
 import NumberService from '../../../services/number'
 import { withRouter } from 'react-router'
-
+import Toast from '../../../services/toast'
 
 class SearchForm extends BaseForm {
 
@@ -38,6 +38,8 @@ class SearchForm extends BaseForm {
             this.props.history.push({pathname: '/search', search: queryString.stringify(parameters)});
             if (this.props.location.pathname === '/search')
                 window.location.reload();
+        } else {
+            Toast.warning("فیلد نوع ملک الزامیست.");
         }
     }
 
