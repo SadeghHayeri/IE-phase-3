@@ -1,5 +1,5 @@
-@import "../variables";
-@import "../mixins";
+@import "../sass/variables";
+@import "../sass/mixins";
 
 nav {
   position: fixed;
@@ -28,6 +28,7 @@ nav {
     flex-direction: row-reverse;
 
     &:hover {
+      color: $teal;
       text-decoration: none;
     }
 

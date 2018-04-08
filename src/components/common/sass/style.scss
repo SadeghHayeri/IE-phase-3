@@ -24,6 +24,10 @@ form.form-inline {
   display: flex;
 }
 
+input[type=radio] {
+  cursor: pointer;
+}
+
 input[type=text],
 input[type=select],
 input[type=number]{

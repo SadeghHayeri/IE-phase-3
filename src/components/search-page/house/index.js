@@ -3,7 +3,7 @@ import PersianView from '../../common/persian-view'
 
 import './style.scss'
 import {Link} from "react-router-dom";
-import { BuildingType, DealType } from '../../../services/enums'
+import { DealType } from '../../../services/enums'
 
 class House extends Component {
     isRentDealType() {
@@ -12,7 +12,7 @@ class House extends Component {
 
     render() {
         return (
-            <Link to={"/house/" + this.props.item.owner.toLowerCase() + "/" + this.props.item.id.toLowerCase()} handler={"salam :D"} className="item base-card light-condensed-card">
+            <Link to={"/house/" + this.props.item.owner + "/" + this.props.item.id} className="item base-card light-condensed-card">
                 {
                     (this.isRentDealType()) ?
                         (<span className="building-type tag-red">رهن و اجاره</span>) :

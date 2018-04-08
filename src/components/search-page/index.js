@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import queryString from 'query-string'
 
 import HouseService from '../../services/search'
 
@@ -21,13 +22,10 @@ class SearchPage extends Component {
     componentDidMount() {
         document.title = "خانه به دوش | جستجو";
 
-        if(!this.props.location.formData)
-            this.props.location.formData = {};
-
-        const searchResults = HouseService.query(this.props.location.formData, (data) => {
+        const formData = queryString.parse(this.props.location.search);
+        HouseService.query(formData, (data) => {
             this.setState({houses: data});
         }, (error) => {
-            console.log("error!");
             console.log(error);
         });
     }

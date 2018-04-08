@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import persianJs from 'persianjs'
 import NumberService from "../../../services/number";
 
 class PersianView extends Component {

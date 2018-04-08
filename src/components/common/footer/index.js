@@ -12,9 +12,9 @@ class Footer extends Component {
             <footer>
                 <div className="container bigger-container">
                     <div className="social-networks">
-                        <a href="#"><img src={instagramIcon} alt=""/></a>
-                        <a href="#"><img src={telegramIcon} alt=""/></a>
-                        <a href="#"><img src={twitterIcon} alt=""/></a>
+                        <a href="https://www.instagram.com"><img src={instagramIcon} alt=""/></a>
+                        <a href="https://telegram.org"><img src={telegramIcon} alt=""/></a>
+                        <a href="https://twitter.com"><img src={twitterIcon} alt=""/></a>
                     </div>
                     <div className="trademark">تمام حقوق مادی و معنوی این وبسایت متعلق به محمدرضا کیانی و صادق حایری می‌باشد</div>
                 </div>

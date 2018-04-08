@@ -1,4 +1,6 @@
 import {API_BASE_PATH} from "./config";
+import {toast } from 'react-toastify';
+
 
 class RequestService {
     static baseRequest(path, config, successCallback, errorCallback) {
@@ -6,12 +8,33 @@ class RequestService {
 
         fetch(path, config)
             .then((response) => response.json())
+            .then((response) => {
+                if(response.code !== 200)
+                    throw Error(response.message);
+                return response;
+            })
             .then((responseJson) => {
+                console.log(responseJson);
+                if(responseJson.message)
+                    toast(responseJson.message, {
+                        type: toast.TYPE.SUCCESS,
+                        autoClose: 3000,
+                        className: {
+                            fontFamily: "Shabnam-Light"
+                        },
+                    });
                 if (successCallback)
                     successCallback(responseJson.data);
             })
             .catch((error) => {
-                console.error(error);
+                // console.error(error);
+                toast(error.message, {
+                    type: toast.TYPE.ERROR,
+                    autoClose: 3000,
+                    className: {
+                        fontFamily: "Shabnam-Light"
+                    },
+                });
                 if (errorCallback)
                     errorCallback(error)
             });

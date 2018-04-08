@@ -1,17 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
+import BaseForm from '../../base/baseform'
+import queryString from 'query-string'
 import './style.scss';
 import {Link} from "react-router-dom";
 import NumberService from '../../../services/number'
 import { withRouter } from 'react-router'
 
 
-class SearchForm extends Component {
+class SearchForm extends BaseForm {
 
     constructor(props) {
         super(props);
-        this.handleChange = this.handleChange.bind(this);
-        this.handleNumberChange = this.handleNumberChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
         this.state = {
             formData: {
                 'minimum-area': "",
@@ -22,45 +21,24 @@ class SearchForm extends Component {
         };
     }
 
-    handleNumberChange(event) {
-        let value = event.target.value;
-        if(value) {
-            let persianValue = NumberService.toPersian(value);
-            if (NumberService.isPersianNumber(persianValue)) {
-                let data = this.state.formData;
-                data[event.target.name] = persianValue;
-                this.setState({formData: data});
-            }
-        } else {
-            let data = this.state.formData;
-            data[event.target.name] = "";
-            this.setState({formData: data});
-        }
-    }
-
-    handleChange(event) {
-        let data = this.state.formData;
-        data[event.target.name] = event.target.value;
-        this.setState({formData: data});
-    }
-
     handleSubmit(e) {
         e.preventDefault();
-        const parameters = {
-            'building-type': parseInt(NumberService.toEnglish(this.state.formData['building-type'])),
-            'deal-type': parseInt(NumberService.toEnglish(this.state.formData['deal-type'])),
-            'minimum-area': parseInt(NumberService.toEnglish(this.state.formData['minimum-area'])),
-            'maximum-price': parseInt(NumberService.toEnglish(this.state.formData['maximum-price'])),
-        };
 
-        // const sampleFormData = {
-        //     'building-type': 1,
-        //     'deal-type': 0,
-        //     'minimum-area': 100,
-        //     'maximum-price': 1000000
-        // };
+        if(this.state.formData['building-type'] !== -1) {
+            let parameters = {};
+            if (this.state.formData['building-type'])
+                parameters['building-type'] = parseInt(NumberService.toEnglish(this.state.formData['building-type']), 10);
+            if (this.state.formData['deal-type'])
+                parameters['deal-type'] = parseInt(NumberService.toEnglish(this.state.formData['deal-type']), 10);
+            if (this.state.formData['minimum-area'])
+                parameters['minimum-area'] = parseInt(NumberService.toEnglish(this.state.formData['minimum-area']), 10);
+            if (this.state.formData['maximum-price'])
+                parameters['maximum-price'] = parseInt(NumberService.toEnglish(this.state.formData['maximum-price']), 10);
 
-        this.props.history.push({pathname: '/search', formData: parameters});
+            this.props.history.push({pathname: '/search', search: queryString.stringify(parameters)});
+            if (this.props.location.pathname === '/search')
+                window.location.reload();
+        }
     }
 
     render() {
@@ -71,7 +49,7 @@ class SearchForm extends Component {
                     <form action="/search" className="form-inline" onSubmit={this.handleSubmit}>
                         <div className="col-md-4 col-xs-12">
                             <div className="unit" htmlFor="minimum-area">متر مربع</div>
-                            <input name="minimum-area" id="minimum-area" type="text" placeholder="حداکثر متراژ" value={this.state.formData['minimum-area']} onChange={this.handleNumberChange}/>
+                            <input name="minimum-area" id="minimum-area" type="text" placeholder="حداقل متراژ" value={this.state.formData['minimum-area']} onChange={this.handleNumberChange}/>
                         </div>
                         <div className="col-md-4 col-xs-12">
                             <div className="unit" htmlFor="maximum-price">تومان</div>
@@ -96,7 +74,7 @@ class SearchForm extends Component {
                             <label htmlFor="radio-2">رهن و اجاره</label>
                         </div>
                         <div className="col-md-5 col-xs-12 margin-top">
-                            <button  type="submit">جستجو</button>
+                            <button className="btn-custom"   type="submit">جستجو</button>
                         </div>
                     </form>
                 </div>
