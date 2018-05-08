@@ -30,7 +30,8 @@ input[type=radio] {
 
 input[type=text],
 input[type=select],
-input[type=number]{
+input[type=number],
+input[type=password]{
   border: 1px solid $lightenedGray;
   outline: none;
   width: 100%;

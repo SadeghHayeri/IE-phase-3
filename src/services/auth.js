@@ -4,7 +4,7 @@ class Auth {
     static user = null;
 
     static makeRequest(successCallback, errorCallback) {
-        RequestService.postRequest("/login", {},
+        RequestService.getRequest("/auth/profile", {},
             (data) => {
                 this.user = {
                     id: data.id,
@@ -23,7 +23,9 @@ class Auth {
         if(this.user)
             successCallback(this.user);
         else {
-            this.makeRequest(successCallback, errorCallback);
+            let token = localStorage.getItem("token");
+            if (token)
+                this.makeRequest(successCallback, errorCallback);
         }
     }
 

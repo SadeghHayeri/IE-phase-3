@@ -5,11 +5,18 @@ class RequestService {
     static baseRequest(path, config, successCallback, errorCallback) {
         path = API_BASE_PATH + path;
 
+        let token = localStorage.getItem("token");
+        if (token)
+            config.headers.Authorization = token;
+
         fetch(path, config)
             .then((response) => response.json())
             .then((response) => {
-                if(response.code !== 200)
+                if(response.code !== 200) {
+                    if (response.code === 403)
+                        localStorage.removeItem("token");
                     throw Error(response.message);
+                }
                 return response;
             })
             .then((responseJson) => {

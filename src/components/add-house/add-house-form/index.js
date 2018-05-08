@@ -105,8 +105,8 @@ class AddHouseForm extends BaseForm {
                                     value={this.state.formData["building-type"]}
                                     onChange={this.handleChange}>
                                 <option value="-1" className="placeholder" disabled>نوع ملک</option>
-                                <option value="0">آپارتمان</option>
-                                <option value="1">ویلایی</option>
+                                <option value="0">ویلایی</option>
+                                <option value="1">آپارتمان</option>
                             </select>
                         </div>
                         <div className="col-md-6 margin-top">

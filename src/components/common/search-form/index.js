@@ -61,8 +61,8 @@ class SearchForm extends BaseForm {
                             <label htmlFor="building-type"></label>
                             <select name="building-type" id="building-type" value={this.state.formData["building-type"]} onChange={this.handleChange}>
                                 <option value="-1" className="placeholder" disabled>نوع ملک</option>
-                                <option value="0">آپارتمان</option>
-                                <option value="1">ویلایی</option>
+                                <option value="0">ویلایی</option>
+                                <option value="1">آپارتمان</option>
                             </select>
                         </div>
                         <div className="offset-md-3 col-md-4 col-xs-12 margin-top">

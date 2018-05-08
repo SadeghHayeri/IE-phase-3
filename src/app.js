@@ -11,6 +11,7 @@ import { ToastContainer } from 'react-toastify';
 import './components/common/sass/app.scss';
 import BindingService from './services/binder';
 import Auth from './services/auth';
+import Login from "./components/login-page";
 
 class App extends Component {
 
@@ -31,6 +32,7 @@ class App extends Component {
                     <Route path="/house/:owner/:id" component={HouseLeafPage}/>
                     <Route path="/account" component={AccountPage}/>
                     <Route path="/add-house" component={AddHousePage}/>
+                    <Route path="/login" component={Login}/>
                     {/* when none of the above match, <NoMatch> will be rendered */}
                     {/*<Route component={NoMatch}/>*/}
                 </Switch>
