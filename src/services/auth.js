@@ -1,35 +1,35 @@
 import RequestService from "./request";
+import BindingService from "./binder";
 
 class Auth {
-    static user = null;
+    static init() {
+        this.user = null;
 
-    static makeRequest(successCallback, errorCallback) {
+        BindingService.listen('AuthChange', (args) => {
+            this.user = args[0];
+        });
+
+        let token = localStorage.getItem("token");
+        if (token)
+            this.makeRequest();
+    }
+
+    static makeRequest() {
         RequestService.getRequest("/auth/profile", {},
             (data) => {
-                this.user = {
-                    id: data.id,
-                    name: data.name,
-                    balance: data.balance
-                };
-                successCallback(this.user)
+                BindingService.signal('AuthChange', data);
             },
             (error) => {
-                errorCallback(error)
+                BindingService.signal('AuthChange', null);
             }
         );
     }
 
-    static getUser(successCallback, errorCallback) {
-        if(this.user)
-            successCallback(this.user);
-        else {
-            let token = localStorage.getItem("token");
-            if (token)
-                this.makeRequest(successCallback, errorCallback);
-        }
+    static getUser() {
+        return this.user;
     }
 
-    static isLogedIn() {
+    static isLoggedIn() {
         return this.user !== null;
     }
 }

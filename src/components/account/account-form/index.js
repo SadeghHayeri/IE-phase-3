@@ -7,6 +7,9 @@ import RequestService from '../../../services/request'
 import NumberService from "../../../services/number";
 import BindingService from '../../../services/binder';
 import Toast from "../../../services/toast";
+import RedirectService from "../../../services/redirect";
+import {withRouter} from "react-router";
+
 
 class AccountForm extends BaseForm {
     constructor(props) {
@@ -50,26 +53,27 @@ class AccountForm extends BaseForm {
     handleSubmit(e) {
         e.preventDefault();
 
-        if (!this.validateFormInputs())
-            return;
+        if (!Auth.isLoggedIn()) {
+            RedirectService.setReferer();
+            this.props.history.push({pathname: '/login'});
+        } else {
 
-        const parameters = {
-            'balance-value': parseInt(NumberService.toEnglish(this.state.formData.price), 10),
-        };
+            if (!this.validateFormInputs())
+                return;
 
-        RequestService.postRequest('/auth/charge', parameters,
-            (response) => {
-                Auth.makeRequest(
-                    (data) => {
-                        let state = this.state;
-                        state.user = data;
-                        state.formData.price = '';
-                        this.setState(state);
-                        BindingService.signal('AuthChange', data);
-                    }
-                );
-            }
-        );
+            const parameters = {
+                'balance-value': parseInt(NumberService.toEnglish(this.state.formData.price), 10),
+            };
+
+            RequestService.postRequest('/auth/charge', parameters,
+                (response) => {
+                    Auth.makeRequest();
+                    let state = this.state;
+                    state.formData.price = '';
+                    this.setState(state);
+                }
+            );
+        }
     }
 
     render() {
@@ -105,4 +109,4 @@ class AccountForm extends BaseForm {
     }
 }
 
-export default AccountForm;
+export default withRouter(AccountForm);

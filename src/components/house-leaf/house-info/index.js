@@ -4,6 +4,9 @@ import RequestService from "../../../services/request";
 import Search from "../../../services/search";
 import {Link} from "react-router-dom";
 import PersianView from "../../common/persian-view";
+import Auth from "../../../services/auth";
+import RedirectService from "../../../services/redirect";
+import {withRouter} from "react-router";
 
 
 class HouseInfo extends Component {
@@ -28,22 +31,28 @@ class HouseInfo extends Component {
     }
 
     handlePayClick(e) {
-        const data = {
-            id: this.state.house.id,
-            owner: this.state.house.owner
-        };
-        RequestService.postRequest('/auth/pay', data,
-            (data) => {
-                let state = this.state;
-                state.house.phone = data.phone;
-                state.house.hasBoughtPhone = data.hasBoughtPhone;
-                this.setState(state);
-            },
-            (error) => {
-                let state = this.state;
-                state.error = true;
-                this.setState(state);
-            });
+        if (!Auth.isLoggedIn()) {
+            RedirectService.setReferer();
+            this.props.history.push({pathname: '/login'});
+        } else {
+            const data = {
+                id: this.state.house.id,
+                owner: this.state.house.owner
+            };
+            RequestService.postRequest('/auth/pay', data,
+                (data) => {
+                    let state = this.state;
+                    state.house.phone = data.phone;
+                    state.house.hasBoughtPhone = data.hasBoughtPhone;
+                    this.setState(state);
+                    Auth.makeRequest();
+                },
+                (error) => {
+                    let state = this.state;
+                    state.error = true;
+                    this.setState(state);
+                });
+        }
     }
 
     isRentDealType() {
@@ -137,4 +146,4 @@ class HouseInfo extends Component {
     }
 }
 
-export default HouseInfo;
+export default withRouter(HouseInfo);

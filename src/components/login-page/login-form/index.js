@@ -5,6 +5,7 @@ import RequestService from "../../../services/request";
 import "./style.scss";
 import BindingService from "../../../services/binder";
 import {withRouter} from "react-router";
+import RedirectService from "../../../services/redirect";
 
 
 class LoginForm extends BaseForm {
@@ -44,7 +45,8 @@ class LoginForm extends BaseForm {
             (data) => {
                 localStorage.setItem("token", data.token);
                 BindingService.signal('AuthChange', data.user);
-                this.props.history.push({pathname: '/'});
+                const url = RedirectService.getReferer("/");
+                this.props.history.push({pathname: url});
             }
         );
     }

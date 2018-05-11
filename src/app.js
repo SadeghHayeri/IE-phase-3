@@ -16,11 +16,7 @@ import Login from "./components/login-page";
 class App extends Component {
 
     componentDidMount() {
-        Auth.getUser((user) => {
-            BindingService.signal('AuthChange', user);
-        }, (error) => {
-            BindingService.signal('AuthChange', null);
-        });
+        Auth.init();
     }
 
     render() {
